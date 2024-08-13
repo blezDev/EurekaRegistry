@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  gateway:
+    image: openjdk:17-jdk-alpine
+    build:
+      context: .
+      dockerfile: Dockerfile.gateway
+    ports:
+      - "8086:8086"
+    container_name: gateway
+
+  auth-service:
+    image: openjdk:17-jdk-alpine
+    build:
+      context: .
+      dockerfile: Dockerfile.auth-service
+    ports:
+      - "8085:8085"
+    container_name: auth-service
+
+  billing-service:
+    image: openjdk:17-jdk-alpine
+    build:
+      context: .
+      dockerfile: Dockerfile.billing-service
+    ports:
+      - "8084:8084"
+    container_name: billing-service
+
+  ride-service:
+    image: openjdk:17-jdk-alpine
+    build:
+      context: .
+      dockerfile: Dockerfile.ride-service
+    ports:
+      - "8083:8083"
+    container_name: ride-service
+
+  eureka-server:
+    image: openjdk:17-jdk-alpine
+    build:
+      context: .
+      dockerfile: Dockerfile.eureka-server
+    ports:
+      - "8082:8082"
+    container_name: eureka-server
+
+  trip-service:
+    image: openjdk:17-jdk-alpine
+    build:
+      context: .
+      dockerfile: Dockerfile.trip-service
+    ports:
+      - "8081:8081"
+    container_name: trip-service
